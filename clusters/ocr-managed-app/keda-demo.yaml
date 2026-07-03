@@ -1,0 +1,30 @@
+# KEDA scaling PoC target. Generic and deployment-agnostic on purpose — the
+# ScaledObject/TriggerAuthentication that reference this deployment's literal
+# Service Bus namespace name are applied separately by the managed app's
+# keda.bicep deploymentScript, not by Flux. See that module for why.
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: keda-demo
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: queue-worker-demo
+  namespace: keda-demo
+spec:
+  # no `replicas` field: once the ScaledObject targets this Deployment, KEDA
+  # (via a generated HPA) owns replica count — leaving it out avoids Flux
+  # fighting the HPA on every reconcile.
+  selector:
+    matchLabels:
+      app: queue-worker-demo
+  template:
+    metadata:
+      labels:
+        app: queue-worker-demo
+    spec:
+      containers:
+        - name: worker
+          image: busybox:stable
+          command: ["sh", "-c", "while true; do echo processing; sleep 30; done"]
