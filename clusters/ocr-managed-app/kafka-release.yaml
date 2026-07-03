@@ -15,7 +15,7 @@ spec:
     namespace: flux-system
   values:
     controller:
-      replicaCount: 5
+      replicaCount: 1
     persistence:
       size: 8Gi
     # Bitnami retired free docker.io/bitnami/* images in 2025; the frozen,
