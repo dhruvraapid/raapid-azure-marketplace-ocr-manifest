@@ -9,13 +9,10 @@ spec:
   targetNamespace: kafka
   install:
     createNamespace: true
-  chart:
-    spec:
-      chart: kafka
-      sourceRef:
-        kind: HelmRepository
-        name: bitnami
-        namespace: flux-system
+  chartRef:
+    kind: OCIRepository
+    name: kafka
+    namespace: flux-system
   values:
     replicaCount: 1
     persistence:
