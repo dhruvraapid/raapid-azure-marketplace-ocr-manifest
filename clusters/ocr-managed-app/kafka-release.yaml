@@ -16,8 +16,8 @@ spec:
   values:
     controller:
       replicaCount: 1
-    persistence:
-      size: 8Gi
+    # persistence:
+    #   size: 8Gi
     # Bitnami retired free docker.io/bitnami/* images in 2025; the frozen,
     # still-free mirror of the last published tags lives under bitnamilegacy.
     image:
