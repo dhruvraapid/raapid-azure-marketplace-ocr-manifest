@@ -15,7 +15,7 @@ spec:
     namespace: flux-system
   values:
     controller:
-      replicaCount: 1
+      replicaCount: 3
       persistence:
         enabled: false   # toggle here to switch PVC on/off; existing PVCs are NOT auto-deleted, see note below
     # Bitnami retired free docker.io/bitnami/* images in 2025; the frozen,
