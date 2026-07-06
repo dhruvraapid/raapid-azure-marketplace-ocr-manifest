@@ -17,7 +17,7 @@ spec:
     controller:
       replicaCount: 3
       persistence:
-        enabled: false   # toggle here to switch PVC on/off; existing PVCs are NOT auto-deleted, see note below
+        enabled: true   # toggle here to switch PVC on/off; existing PVCs are NOT auto-deleted
     # Bitnami retired free docker.io/bitnami/* images in 2025; the frozen,
     # still-free mirror of the last published tags lives under bitnamilegacy.
     image:
